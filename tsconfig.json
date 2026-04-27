@@ -10,7 +10,11 @@
     "rootDir": ".",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": [
+      "node",
+      "vscode"
+    ]
   },
   "include": [
     "src",

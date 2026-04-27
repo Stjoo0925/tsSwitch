@@ -15,7 +15,9 @@ describe('output logger', () => {
       activeLanguage: 'typescriptreact',
       workspaceFolders: ['C:\\workspace'],
       tsdk: './node_modules/typescript/lib',
-      tsserverLog: 'verbose'
+      tsserverLog: 'verbose',
+      diagnosticCount: 3,
+      maxTsServerMemory: 3072
     };
 
     assert.deepEqual(formatInitializationSnapshot(snapshot), [
@@ -25,26 +27,29 @@ describe('output logger', () => {
       '  Workspace folders: C:\\workspace',
       '  typescript.tsdk: ./node_modules/typescript/lib',
       '  typescript.tsserver.log: verbose',
+      '  Diagnostics count: 3',
+      '  Max TS server memory: 3072',
       '  TS server internals: use "TS Switch: Open TypeScript Server Log" for VS Code tsserver initialization details.'
     ]);
   });
 
-  it('uses readable fallback values when restart context is missing', () => {
+  it('omits missing restart context values', () => {
     const snapshot: RestartSnapshot = {
       activeFile: undefined,
       activeLanguage: undefined,
       workspaceFolders: [],
       tsdk: undefined,
-      tsserverLog: 'off'
+      tsserverLog: 'off',
+      diagnosticCount: 0,
+      maxTsServerMemory: undefined
     };
 
     assert.deepEqual(formatInitializationSnapshot(snapshot), [
       'TypeScript restart context:',
-      '  Active file: none',
-      '  Active language: none',
-      '  Workspace folders: none',
-      '  typescript.tsdk: default VS Code TypeScript',
+      '  Workspace folders: 0',
       '  typescript.tsserver.log: off',
+      '  Diagnostics count: 0',
+      '  Max TS server memory: default',
       '  TS server internals: set "typescript.tsserver.log" to "verbose", then use "TS Switch: Open TypeScript Server Log".'
     ]);
   });

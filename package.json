@@ -2,7 +2,7 @@
   "name": "tsswitch",
   "displayName": "TS Switch",
   "description": "Restart the VS Code TypeScript server from the status bar.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "stjoo0925",
   "icon": "./icon.png",
   "repository": {
@@ -30,7 +30,7 @@
     "onLanguage:javascript",
     "onLanguage:javascriptreact",
     "onCommand:tsSwitch.restartTypeScriptServer",
-    "onCommand:tsSwitch.openTypeScriptServerLog"
+    "onCommand:tsSwitch.showMenu"
   ],
   "main": "./dist/src/extension.js",
   "contributes": {
@@ -40,10 +40,25 @@
         "title": "TS Switch: Restart TypeScript Server"
       },
       {
-        "command": "tsSwitch.openTypeScriptServerLog",
-        "title": "TS Switch: Open TypeScript Server Log"
+        "command": "tsSwitch.showMenu",
+        "title": "TS Switch: Show Menu"
       }
     ],
+    "configuration": {
+      "title": "TS Switch",
+      "properties": {
+        "tsSwitch.autoRecovery": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically recover TypeScript by restarting the TS server after config changes, error spikes, or an unresponsive TS server."
+        },
+        "tsSwitch.reloadWindowAfterRestart": {
+          "type": "boolean",
+          "default": false,
+          "description": "Reload the VS Code window after the integrated restart and project reload flow."
+        }
+      }
+    },
     "keybindings": [
       {
         "command": "tsSwitch.restartTypeScriptServer",
@@ -55,7 +70,7 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "test": "npm run compile && node ./dist/test/suite/statusLabels.test.js && node ./dist/test/suite/outputLogger.test.js"
+    "test": "npm run compile && node ./dist/test/suite/statusLabels.test.js && node ./dist/test/suite/statusBarController.test.js && node ./dist/test/suite/autoRecoverySettings.test.js && node ./dist/test/suite/restartSettings.test.js && node ./dist/test/suite/outputLogger.test.js && node ./dist/test/suite/historyTracker.test.js && node ./dist/test/suite/logMessages.test.js && node ./dist/test/suite/packageManifest.test.js && node ./dist/test/suite/extensionMenu.test.js"
   },
   "devDependencies": {
     "@types/node": "^20.17.10",

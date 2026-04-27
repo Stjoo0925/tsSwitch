@@ -8,18 +8,34 @@ export interface RestartSnapshot {
   workspaceFolders: string[];
   tsdk: string | undefined;
   tsserverLog: string;
+  diagnosticCount: number;
+  maxTsServerMemory: number | undefined;
 }
 
 export function formatInitializationSnapshot(snapshot: RestartSnapshot): string[] {
-  return [
+  const lines = [
     'TypeScript restart context:',
-    `  Active file: ${snapshot.activeFile ?? 'none'}`,
-    `  Active language: ${snapshot.activeLanguage ?? 'none'}`,
-    `  Workspace folders: ${snapshot.workspaceFolders.length > 0 ? snapshot.workspaceFolders.join(', ') : 'none'}`,
-    `  typescript.tsdk: ${snapshot.tsdk || 'default VS Code TypeScript'}`,
+  ];
+
+  if (snapshot.activeFile) {
+    lines.push(`  Active file: ${snapshot.activeFile}`);
+  }
+  if (snapshot.activeLanguage) {
+    lines.push(`  Active language: ${snapshot.activeLanguage}`);
+  }
+  lines.push(
+    `  Workspace folders: ${snapshot.workspaceFolders.length > 0 ? snapshot.workspaceFolders.join(', ') : '0'}`,
+  );
+  if (snapshot.tsdk) {
+    lines.push(`  typescript.tsdk: ${snapshot.tsdk}`);
+  }
+  lines.push(
     `  typescript.tsserver.log: ${snapshot.tsserverLog}`,
+    `  Diagnostics count: ${snapshot.diagnosticCount}`,
+    `  Max TS server memory: ${snapshot.maxTsServerMemory ?? 'default'}`,
     snapshot.tsserverLog === 'off'
       ? '  TS server internals: set "typescript.tsserver.log" to "verbose", then use "TS Switch: Open TypeScript Server Log".'
       : '  TS server internals: use "TS Switch: Open TypeScript Server Log" for VS Code tsserver initialization details.'
-  ];
+  );
+  return lines;
 }
