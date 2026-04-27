@@ -2,8 +2,21 @@
   "name": "tsswitch",
   "displayName": "TS Switch",
   "description": "Restart the VS Code TypeScript server from the status bar.",
-  "version": "0.0.1",
-  "publisher": "yuscon",
+  "version": "0.0.2",
+  "publisher": "stjoo0925",
+  "icon": "./icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Stjoo0925/tsSwitch.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "restart",
+    "tsserver",
+    "javascript",
+    "intellisense"
+  ],
   "engines": {
     "vscode": "^1.90.0"
   },
