@@ -43,6 +43,13 @@
         "command": "tsSwitch.openTypeScriptServerLog",
         "title": "TS Switch: Open TypeScript Server Log"
       }
+    ],
+    "keybindings": [
+      {
+        "command": "tsSwitch.restartTypeScriptServer",
+        "key": "ctrl+alt+t",
+        "mac": "cmd+alt+t"
+      }
     ]
   },
   "scripts": {
