@@ -4,6 +4,13 @@ TS Switch is a small VS Code extension that restarts the built-in TypeScript ser
 
 Use it when IntelliSense, type checking, imports, or TS/JS language features get stuck and you would normally run `TypeScript: Restart TS Server` from the command palette.
 
+## Installation
+
+1. Open VS Code
+2. Go to Extensions (Ctrl+Shift+X)
+3. Search for "TS Switch"
+4. Click "Install"
+
 ## Usage
 
 1. Open a TypeScript, TSX, JavaScript, or JSX workspace.

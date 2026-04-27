@@ -2,7 +2,7 @@
   "name": "tsswitch",
   "displayName": "TS Switch",
   "description": "Restart the VS Code TypeScript server from the status bar.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "stjoo0925",
   "icon": "./icon.png",
   "repository": {
