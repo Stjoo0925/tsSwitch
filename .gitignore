@@ -1,0 +1,21 @@
+.omc/
+docs/
+
+# 의존성
+node_modules/
+
+# 빌드 산출물
+dist/
+*.vsix
+
+# 테스트/임시 파일
+.vscode-test/
+coverage/
+*.log
+
+# 환경 설정
+.env
+
+# OS 임시 파일
+.DS_Store
+Thumbs.db

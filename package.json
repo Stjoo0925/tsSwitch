@@ -1,0 +1,46 @@
+{
+  "name": "tsswitch",
+  "displayName": "TS Switch",
+  "description": "Restart the VS Code TypeScript server from the status bar.",
+  "version": "0.0.1",
+  "publisher": "yuscon",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact",
+    "onCommand:tsSwitch.restartTypeScriptServer",
+    "onCommand:tsSwitch.openTypeScriptServerLog"
+  ],
+  "main": "./dist/src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tsSwitch.restartTypeScriptServer",
+        "title": "TS Switch: Restart TypeScript Server"
+      },
+      {
+        "command": "tsSwitch.openTypeScriptServerLog",
+        "title": "TS Switch: Open TypeScript Server Log"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node ./dist/test/suite/statusLabels.test.js && node ./dist/test/suite/outputLogger.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.10",
+    "@types/vscode": "^1.90.0",
+    "@vscode/test-electron": "^2.5.2",
+    "typescript": "^5.7.2"
+  }
+}

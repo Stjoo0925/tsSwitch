@@ -1,0 +1,8 @@
+.vscode/**
+src/**
+test/**
+docs/**
+tsconfig.json
+**/*.map
+node_modules/**
+.omc/**
